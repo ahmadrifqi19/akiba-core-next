@@ -280,7 +280,7 @@ export default function HomePage() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-300/30 dark:from-[#581c87]/40 via-transparent to-transparent pointer-events-none z-0"></div>
       
       {/* Watermark Katakana Background */}
-      <div className="absolute top-10 left-5 text-[120px] font-black text-purple-900/10 dark:text-purple-900/10 select-none pointer-events-none font-mono z-0">
+      <div className="absolute top-10 left-5 text-[80px] md:text-[120px] font-black text-purple-900/10 dark:text-purple-900/10 select-none pointer-events-none font-mono z-0">
         アキバコア
       </div>
 
@@ -315,14 +315,14 @@ export default function HomePage() {
           </div>
           
           {/* Kolom Kanan: Sosmed Resmi (SVG), Theme Toggle & Sewa */}
-          <div className="flex items-center gap-2 md:gap-3">
+          <div className="flex items-center gap-1.5 md:gap-3">
             
             {/* Instagram Resmi - Menggunakan URL yang Benar dan Ikon Logo */}
             <a
               href="https://www.instagram.com/akibacore.id/"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-xl bg-purple-100 dark:bg-purple-900/40 border border-purple-300 dark:border-purple-500/40 text-pink-600 dark:text-pink-400 hover:scale-110 transition-all shadow-md flex items-center justify-center"
+              className="p-1.5 md:p-2.5 rounded-xl bg-purple-100 dark:bg-purple-900/40 border border-purple-300 dark:border-purple-500/40 text-pink-600 dark:text-pink-400 hover:scale-110 transition-all shadow-md flex items-center justify-center"
               title="Buka Instagram @akibacore.id Resmi"
             >
               <InstagramIcon className="w-4 h-4" />
@@ -333,7 +333,7 @@ export default function HomePage() {
               href="https://tiktok.com/@akibacore"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-xl bg-purple-100 dark:bg-purple-900/40 border border-purple-300 dark:border-purple-500/40 text-slate-900 dark:text-[#00f0ff] hover:scale-110 transition-all shadow-md flex items-center justify-center"
+              className="p-1.5 md:p-2.5 rounded-xl bg-purple-100 dark:bg-purple-900/40 border border-purple-300 dark:border-purple-500/40 text-slate-900 dark:text-[#00f0ff] hover:scale-110 transition-all shadow-md flex items-center justify-center"
               title="Buka TikTok @akibacore Resmi"
             >
               <TikTokIcon className="w-4 h-4" />
@@ -344,7 +344,7 @@ export default function HomePage() {
               href={`https://wa.me/6285121263131`}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-xl bg-purple-100 dark:bg-purple-900/40 border border-purple-300 dark:border-purple-500/40 text-emerald-600 dark:text-emerald-400 hover:scale-110 transition-all shadow-md flex items-center justify-center"
+              className="p-1.5 md:p-2.5 rounded-xl bg-purple-100 dark:bg-purple-900/40 border border-purple-300 dark:border-purple-500/40 text-emerald-600 dark:text-emerald-400 hover:scale-110 transition-all shadow-md flex items-center justify-center"
               title="Chat WhatsApp Admin Akiba Core"
             >
               <WhatsAppIcon className="w-4 h-4" />
@@ -357,7 +357,7 @@ export default function HomePage() {
             {mounted && (
               <button
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="p-2.5 rounded-xl bg-purple-100 dark:bg-purple-900/40 border border-purple-300 dark:border-purple-500/40 text-purple-900 dark:text-[#00f0ff] hover:bg-purple-200 dark:hover:bg-purple-800/50 transition-all shadow-md flex items-center justify-center"
+                className="p-1.5 md:p-2.5 rounded-xl bg-purple-100 dark:bg-purple-900/40 border border-purple-300 dark:border-purple-500/40 text-purple-900 dark:text-[#00f0ff] hover:bg-purple-200 dark:hover:bg-purple-800/50 transition-all shadow-md flex items-center justify-center"
                 title="Ganti Mode Tampilan"
               >
                 {theme === "dark" ? (
@@ -373,10 +373,11 @@ export default function HomePage() {
               whileHover={{ scale: 1.05, rotate: -2 }}
               whileTap={{ scale: 0.95 }}
               href="#booking-section" 
-              className="px-4 py-2 text-xs font-black rounded-xl bg-gradient-to-r from-[#ff007f] to-purple-600 text-white shadow-[0_0_20px_rgba(255,0,127,0.6)] flex items-center gap-2 border-2 border-white/80"
+              className="px-3 py-1.5 md:px-4 md:py-2 text-[10px] md:text-xs font-black rounded-xl bg-gradient-to-r from-[#ff007f] to-purple-600 text-white shadow-[0_0_20px_rgba(255,0,127,0.6)] flex items-center gap-1.5 md:gap-2 border-2 border-white/80"
             >
-              <Zap className="w-4 h-4 fill-current animate-pulse" />
-              <span className="hidden sm:inline">SEWA SEKARANG</span>
+              <Zap className="w-3.5 h-3.5 md:w-4 md:h-4 fill-current animate-pulse shrink-0" />
+              <span className="xs:hidden">SEWA</span>
+              <span className="hidden xs:inline">SEKARANG</span>
             </motion.a>
           </div>
 
@@ -405,10 +406,10 @@ export default function HomePage() {
               <p className="text-[#00f0ff] text-xl font-bold tracking-widest uppercase" style={{ fontFamily: "var(--font-marker), cursive" }}>
                 #morethanjustagames
               </p>
-              <h1 className="text-6xl md:text-8xl font-black tracking-tight leading-none uppercase text-slate-900 dark:text-white drop-shadow-md transition-colors" style={{ fontFamily: "var(--font-teko), sans-serif" }}>
+              <h1 className="text-4xl xs:text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none uppercase text-slate-900 dark:text-white drop-shadow-md transition-colors" style={{ fontFamily: "var(--font-teko), sans-serif" }}>
                 PLAYBOX <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#ff007f] via-purple-600 dark:via-purple-300 to-[#00f0ff]">PS4 PRO</span>
               </h1>
-              <div className="inline-block bg-[#ff007f] text-white dark:text-slate-950 px-4 py-1 text-2xl font-black uppercase -rotate-2 shadow-[4px_4px_0px_#00f0ff]" style={{ fontFamily: "var(--font-teko), sans-serif" }}>
+              <div className="inline-block bg-[#ff007f] text-white dark:text-slate-950 px-3 py-1 text-base xs:text-xl md:text-2xl font-black uppercase -rotate-2 shadow-[4px_4px_0px_#00f0ff]" style={{ fontFamily: "var(--font-teko), sans-serif" }}>
                 SIAP ANTAR DAN JEMPUT!
               </div>
             </div>
@@ -417,16 +418,16 @@ export default function HomePage() {
               Konsol PS4 Pro terintegrasi dengan Monitor Portable di dalam Box Koper eksklusif. Colok listrik langsung mabar di mana saja! Area Cilegon & Serang.
             </p>
 
-            <div className="pt-2 flex flex-wrap gap-3 text-xs font-bold">
-              <div className="flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-purple-950/60 rounded-xl border border-purple-200 dark:border-purple-800 shadow-md transition-colors">
-                <Truck className="text-[#00f0ff] w-4 h-4" />
+            <div className="pt-2 flex flex-wrap gap-2 md:gap-3 text-[10px] md:text-xs font-bold">
+              <div className="flex items-center gap-2 px-3 py-2 md:px-4 md:py-2 bg-white/80 dark:bg-purple-950/60 rounded-xl border border-purple-200 dark:border-purple-800 shadow-md transition-colors">
+                <Truck className="text-[#00f0ff] w-4 h-4 shrink-0" />
                 <span className="text-slate-900 dark:text-slate-100">Antar Jemput Lokasi</span>
               </div>
-              <div className="flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-purple-950/60 rounded-xl border border-purple-200 dark:border-purple-800 shadow-md transition-colors">
-                <Tv className="text-[#ff007f] w-4 h-4" />
+              <div className="flex items-center gap-2 px-3 py-2 md:px-4 md:py-2 bg-white/80 dark:bg-purple-950/60 rounded-xl border border-purple-200 dark:border-purple-800 shadow-md transition-colors">
+                <Tv className="text-[#ff007f] w-4 h-4 shrink-0" />
                 <span className="text-slate-900 dark:text-slate-100">Monitor Portable Built-in</span>
               </div>
-              <div className="flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-purple-950/60 rounded-xl border border-purple-200 dark:border-purple-800 shadow-md transition-colors">
+              <div className="flex items-center gap-2 px-3 py-2 md:px-4 md:py-2 bg-white/80 dark:bg-purple-950/60 rounded-xl border border-purple-200 dark:border-purple-800 shadow-md transition-colors">
                 <Clock className="text-amber-400 w-4 h-4 shrink-0" />
                 <span className="text-slate-900 dark:text-slate-100">Buka Hingga 02.00 WIB</span>
               </div>
@@ -525,7 +526,7 @@ export default function HomePage() {
                     <span>{item.durasi}</span>
                   </div>
 
-                  <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-2 transition-colors" style={{ fontFamily: "var(--font-teko), sans-serif" }}>{item.nama}</h3>
+                  <h3 className="text-xl md:text-2xl font-black text-slate-900 dark:text-white mb-2 transition-colors" style={{ fontFamily: "var(--font-teko), sans-serif" }}>{item.nama}</h3>
 
                   <div className="mb-4">
                     <span className="text-3xl font-black text-purple-900 dark:text-[#00f0ff] transition-colors">{formatRupiah(item.harga)}</span>
@@ -614,14 +615,14 @@ export default function HomePage() {
               key={idx}
               className="p-4 rounded-xl bg-white dark:bg-[#140a28]/80 border border-purple-200 dark:border-purple-900/60 hover:border-[#00f0ff] transition-all flex items-center justify-between group shadow-sm"
             >
-              <div className="flex items-center gap-3">
-                <span className="text-2xl p-2 rounded-lg bg-purple-50 dark:bg-[#0b0416] border border-purple-200 dark:border-purple-900 transition-colors">{game.icon}</span>
-                <div>
-                  <h4 className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-[#00f0ff] transition-colors">{game.title}</h4>
+              <div className="flex items-center gap-3 min-w-0 flex-1">
+                <span className="text-2xl p-2 rounded-lg bg-purple-50 dark:bg-[#0b0416] border border-purple-200 dark:border-purple-900 transition-colors shrink-0">{game.icon}</span>
+                <div className="min-w-0 flex-1">
+                  <h4 className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-[#00f0ff] transition-colors truncate">{game.title}</h4>
                   <span className="text-[10px] text-purple-500 dark:text-purple-400 uppercase font-mono transition-colors">{game.category}</span>
                 </div>
               </div>
-              {game.popular && <span className="text-[9px] font-black px-2 py-0.5 rounded bg-[#ff007f]/20 text-[#ff007f] border border-[#ff007f]/30">HOT</span>}
+              {game.popular && <span className="text-[9px] font-black px-2 py-0.5 rounded bg-[#ff007f]/20 text-[#ff007f] border border-[#ff007f]/30 shrink-0">HOT</span>}
             </div>
           ))}
         </div>
@@ -657,7 +658,7 @@ export default function HomePage() {
             </div>
 
             <div>
-              <div className="flex justify-between items-center mb-1">
+              <div className="flex flex-col xs:flex-row justify-between items-start xs:items-center gap-2 mb-1">
                 <label className="text-xs font-bold text-slate-700 dark:text-purple-200 uppercase flex items-center gap-1 transition-colors">
                   <span>Alamat Pengiriman Lengkap</span>
                   {isSearchingAddress && <Loader2 className="w-3.5 h-3.5 text-[#00f0ff] animate-spin" />}
@@ -668,7 +669,7 @@ export default function HomePage() {
                   onClick={handleGetGPSLocation}
                   className="px-3 py-1 rounded-lg bg-[#00f0ff]/10 border border-[#00f0ff]/40 text-[#00f0ff] text-[11px] font-extrabold flex items-center gap-1 hover:bg-[#00f0ff]/20 transition-all"
                 >
-                  <Navigation className="w-3.5 h-3.5" />
+                  <Navigation className="w-3.5 h-3.5 shrink-0" />
                   <span>Deteksi Lokasi GPS Saya</span>
                 </button>
               </div>
@@ -730,10 +731,10 @@ export default function HomePage() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               type="submit" 
-              className="w-full py-4 rounded-xl font-black text-sm bg-gradient-to-r from-[#ff007f] to-purple-600 text-white flex justify-center items-center gap-3 shadow-lg border border-white/20"
+              className="w-full py-3 md:py-4 rounded-xl font-black text-[11px] md:text-sm bg-gradient-to-r from-[#ff007f] to-purple-600 text-white flex justify-center items-center gap-2 md:gap-3 shadow-lg border border-white/20 mb-8 md:mb-0"
             >
-              <WhatsAppIcon className="w-5 h-5 fill-current" /> 
-              <span>KONFIRMASI BOOKING VIA WHATSAPP</span>
+              <WhatsAppIcon className="w-4 h-4 md:w-5 md:h-5 fill-current shrink-0" /> 
+              <span className="leading-tight text-center">KONFIRMASI BOOKING VIA WHATSAPP</span>
             </motion.button>
           </form>
         </div>
@@ -800,11 +801,11 @@ export default function HomePage() {
 
              {/* Box Rincian Jam Operasional */}
             <div className="inline-block p-3 rounded-xl bg-purple-100/70 dark:bg-purple-950/60 border border-purple-300 dark:border-purple-800 text-xs text-slate-800 dark:text-purple-200 text-center space-y-1">
-              <div className="font-bold flex items-center justify-center gap-1 text-[#ff007f]">
-                <Clock className="w-3.5 h-3.5" />
+              <div className="font-bold flex items-center justify-center gap-1 text-[#ff007f] text-[9px] md:text-xs">
+                <Clock className="w-3.5 h-3.5 shrink-0" />
                 <span>JAM OPERASIONAL & BUKA TUTUP</span>
               </div>
-              <div className="flex flex-col sm:flex-row gap-x-4 gap-y-1 font-mono text-[11px] justify-center">
+              <div className="flex flex-col sm:flex-row gap-x-4 gap-y-1 font-mono text-[9px] md:text-[11px] justify-center">
                 <span>🗓️ {JAM_WEEKDAY}</span>
                 <span>🔥 {JAM_WEEKEND}</span>
               </div>
