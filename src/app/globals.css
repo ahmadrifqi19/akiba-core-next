@@ -1,26 +1,39 @@
 @import "tailwindcss";
+@tailwind base;
+@tailwind components;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Tailwind v4 harus mengikuti class dari next-themes, bukan preferensi OS. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+html {
+  color-scheme: light;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html.dark {
+  color-scheme: dark;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Jika ada kode bawaan :root di bawah ini yang memaksa warna putih/hitam, kamu bisa hapus atau sesuaikan */
+@layer utilities {
+  .bg-grid-pattern {
+    background-size: 30px 30px;
+    background-image: 
+      linear-gradient(to right, rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Custom Scrollbar Cyberpunk */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #090a0f;
+}
+::-webkit-scrollbar-thumb {
+  background: #1f2338;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00f0ff;
 }
