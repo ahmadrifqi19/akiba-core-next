@@ -710,15 +710,17 @@ export default function HomePage() {
               </div>
 
               <div>
-                <label className="block text-[11px] font-bold text-slate-700 dark:text-purple-300 uppercase mb-1 transition-colors">Request Jam Pengantaran</label>
-                <input 
-                  type="time" 
-                  required
-                  value={jamAntar} 
-                  onChange={(e) => setJamAntar(e.target.value)} 
-                  className="w-full bg-purple-50 dark:bg-[#0b0416] border border-purple-200 dark:border-purple-800 rounded-xl p-3 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-[#00f0ff] dark:[color-scheme:dark] transition-colors" 
-                />
-              </div>
+              <label className="block text-[11px] md:text-xs font-bold text-slate-700 dark:text-purple-300 uppercase mb-1 transition-colors">
+                Request Jam Pengantaran
+              </label>
+              <input 
+                type="time" 
+                required
+                value={jamAntar} 
+                onChange={(e) => setJamAntar(e.target.value)} 
+                className="w-full h-11 md:h-12 bg-purple-50 dark:bg-[#0b0416] border border-purple-200 dark:border-purple-800 rounded-lg md:rounded-xl px-3 text-xs md:text-sm text-slate-900 dark:text-white focus:outline-none focus:border-[#00f0ff] appearance-none leading-normal transition-colors cursor-pointer" 
+              />
+            </div>
             </div>
 
             <div className="p-4 rounded-xl bg-purple-50 dark:bg-[#0b0416] border border-[#ff007f]/40 font-mono text-xs space-y-2 transition-colors">
