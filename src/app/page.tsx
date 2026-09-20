@@ -710,17 +710,35 @@ export default function HomePage() {
               </div>
 
               <div>
-              <label className="block text-[11px] md:text-xs font-bold text-slate-700 dark:text-purple-300 uppercase mb-1 transition-colors">
-                Request Jam Pengantaran
-              </label>
-              <input 
-                type="time" 
-                required
-                value={jamAntar} 
-                onChange={(e) => setJamAntar(e.target.value)} 
-                className="w-full h-11 md:h-12 bg-purple-50 dark:bg-[#0b0416] border border-purple-200 dark:border-purple-800 rounded-lg md:rounded-xl px-3 text-xs md:text-sm text-slate-900 dark:text-white focus:outline-none focus:border-[#00f0ff] appearance-none leading-normal transition-colors cursor-pointer" 
-              />
-            </div>
+                <label className="block text-[11px] md:text-xs font-bold text-slate-700 dark:text-purple-300 uppercase mb-1 transition-colors">
+                  Request Jam Pengantaran
+                </label>
+                <select
+                  required
+                  value={jamAntar}
+                  onChange={(e) => setJamAntar(e.target.value)}
+                  className="w-full h-11 md:h-12 bg-purple-50 dark:bg-[#0b0416] border border-purple-200 dark:border-purple-800 rounded-lg md:rounded-xl px-3 text-xs md:text-sm text-slate-900 dark:text-white focus:outline-none focus:border-[#00f0ff] transition-colors cursor-pointer"
+                >
+                  <option value="" disabled>-- Pilih Jam Pengantaran --</option>
+                  
+                  {/* Opsi Fleksibel/Ketersediaan Admin */}
+                  <option value="Fleksibel / Konfirmasi Admin">
+                    ⚡ Fleksibel / Konfirmasi Admin
+                  </option>
+                  
+                  {/* Pilihan Jam Reguler (11.00 - 20.00 WIB) */}
+                  <option value="11:00 WIB">11:00 WIB</option>
+                  <option value="12:00 WIB">12:00 WIB</option>
+                  <option value="13:00 WIB">13:00 WIB</option>
+                  <option value="14:00 WIB">14:00 WIB</option>
+                  <option value="15:00 WIB">15:00 WIB</option>
+                  <option value="16:00 WIB">16:00 WIB</option>
+                  <option value="17:00 WIB">17:00 WIB</option>
+                  <option value="18:00 WIB">18:00 WIB</option>
+                  <option value="19:00 WIB">19:00 WIB</option>
+                  <option value="20:00 WIB">20:00 WIB</option>
+                </select>
+              </div>
             </div>
 
             <div className="p-4 rounded-xl bg-purple-50 dark:bg-[#0b0416] border border-[#ff007f]/40 font-mono text-xs space-y-2 transition-colors">
