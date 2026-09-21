@@ -434,55 +434,42 @@ export default function HomePage() {
             </div>
           </motion.div>
 
-          {/* Kolom Visual Kanan: Card Stiker dengan Efek Cutout */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-            className="lg:col-span-5 relative flex justify-center items-center mt-6 lg:mt-0"
-          >
-            {/* Element Glow Neon Belakang */}
-            <div className="absolute w-80 h-80 bg-gradient-to-tr from-[#ff007f] via-purple-600 to-[#00f0ff] rounded-full blur-[90px] opacity-70"></div>
-            
-            {/* Card Utama Berbentuk Stiker Cutout */}
-            <div className="relative bg-white/90 dark:bg-[#140a28]/90 border-4 border-slate-900 dark:border-white/90 rounded-3xl p-6 shadow-2xl rotate-2 hover:rotate-0 transition-all duration-500 backdrop-blur-md">
-              <div className="absolute -top-4 -right-4 bg-[#00f0ff] text-slate-950 font-black text-xs px-3 py-1 rounded-md rotate-12 shadow-md flex items-center gap-1 z-20">
-                <Swords className="w-3.5 h-3.5 text-[#ff007f]" />
-                <span>GOD OF WAR READY</span>
-              </div>
+          {/* Kolom Visual Kanan: 3D Floating & Interactive Playbox Showcase */}
+{/* Kolom Visual Kanan: Standalone Floating Playbox PNG Only */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+          className="lg:col-span-5 relative flex justify-center items-center mt-6 lg:mt-0"
+        >
+          {/* Element Glow Neon Background (Bulat Berdenyut) */}
+          <div className="absolute w-64 h-64 xs:w-80 xs:h-80 md:w-96 md:h-96 bg-gradient-to-tr from-[#ff007f] via-purple-600 to-[#00f0ff] rounded-full blur-[80px] md:blur-[110px] opacity-60 animate-pulse pointer-events-none"></div>
 
-              {/* Konten Dalam Card (Layout Kratos Stencil) */}
-              <div className="w-full h-72 bg-purple-50 dark:bg-[#0b0416] rounded-2xl border-2 border-dashed border-purple-300 dark:border-purple-500/50 flex flex-col items-center justify-center p-4 text-center space-y-3 relative overflow-hidden transition-colors">
-                {/* Visual Karakter Kratos / Gaming Aura Background Radial */}
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-purple-200 dark:from-purple-900/40 via-transparent to-transparent pointer-events-none z-0 transition-colors"></div>
-
-                <div className="p-4 bg-gradient-to-tr from-[#ff007f] via-purple-600 to-[#00f0ff] rounded-2xl shadow-2xl relative z-10 border border-white/30">
-                  {/* Ganti ikon dengan Logo Akiba Core Image */}
-                  <Image 
-                    src="/toto.png" 
-                    alt="Logo Akiba Core Hero Visual" 
-                    width={64} 
-                    height={64} 
-                    className="object-contain object-center"
-                  />
-                </div>
-
-                <div className="relative z-10">
-                  <h3 className="text-3xl font-black text-slate-900 dark:text-white tracking-wide" style={{ fontFamily: "var(--font-teko), sans-serif" }}>
-                    PLAYBOX PS4 PRO
-                  </h3>
-                  <p className="text-xs text-[#ff007f] dark:text-[#00f0ff] font-mono font-bold tracking-widest uppercase transition-colors">
-                    🪓 GOD OF WAR • GTA V • FC27
-                  </p>
-                </div>
-              </div>
-
-              <div className="mt-4 flex justify-between items-center text-xs font-mono text-slate-700 dark:text-purple-200 transition-colors">
-                <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-[#00f0ff] animate-ping"></span> ONLINE</span>
-                <span className="text-[#ff007f] font-extrabold">AKIBA CORE ENTERPRISE</span>
-              </div>
-            </div>
-          </motion.div>
+          {/* FOTO PLAYBOX PNG DENGAN ANIMASI MELAYANG (FLOATING) */}
+          <div className="relative w-full max-w-sm md:max-w-md h-64 xs:h-72 md:h-80 flex items-center justify-center z-10">
+            <motion.div
+              animate={{ 
+                y: [-8, 8, -8],
+                rotate: [-1, 1, -1]
+              }}
+              transition={{ 
+                repeat: Infinity, 
+                duration: 4, 
+                ease: "easeInOut" 
+              }}
+              className="relative w-full h-full flex items-center justify-center filter drop-shadow-[0_20px_35px_rgba(0,240,255,0.45)] hover:scale-105 transition-transform duration-300 cursor-pointer"
+            >
+              <Image 
+                src="/playbox.png" 
+                alt="Akiba Core Playbox PS4 Pro Unit" 
+                width={450}
+                height={450}
+                className="object-contain max-h-full max-w-full"
+                priority
+              />
+            </motion.div>
+          </div>
+        </motion.div>
 
         </div>
       </section>

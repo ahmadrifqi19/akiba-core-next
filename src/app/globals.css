@@ -2,6 +2,10 @@
 @tailwind base;
 @tailwind components;
 
+@theme {
+  --breakpoint-xs: 30rem;
+}
+
 /* Tailwind v4 harus mengikuti class dari next-themes, bukan preferensi OS. */
 @custom-variant dark (&:where(.dark, .dark *));
 
