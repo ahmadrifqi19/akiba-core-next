@@ -832,7 +832,7 @@ const gameCatalog: GameItem[] = [
               </div>
               <div className="flex flex-col sm:flex-row gap-x-4 gap-y-1 font-mono text-[9px] md:text-[11px] justify-center">
                 <span>{JAM_WEEKDAY}</span>
-                <span>| {JAM_WEEKEND}</span>
+                <span>{JAM_WEEKEND}</span>
               </div>
             </div>
 
