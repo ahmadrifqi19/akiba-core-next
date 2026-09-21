@@ -103,8 +103,8 @@ export default function HomePage() {
 
   // Data Katalog Game
   const gameCatalog: GameItem[] = [
-    { title: "EA Sports FC 24 / FIFA", category: "sports", icon: "⚽", popular: true },
-    { title: "eFootball 2024", category: "sports", icon: "🎮", popular: true },
+    { title: "EA Sports FC 27 / FIFA", category: "sports", icon: "⚽", popular: true },
+    { title: "PES Bitbox 2027", category: "sports", icon: "🎮", popular: true },
     { title: "GTA V (Grand Theft Auto)", category: "action", icon: "🚗", popular: true },
     { title: "God of War Ragnarök", category: "action", icon: "🪓", popular: true },
     { title: "Tekken 7 / Tekken 8", category: "fighting", icon: "🥊", popular: true },
@@ -330,7 +330,7 @@ export default function HomePage() {
 
             {/* TikTok Resmi - Menggunakan SVG Kustom */}
             <a
-              href="https://tiktok.com/@akibacore"
+              href="https://tiktok.com/@akibacore7"
               target="_blank"
               rel="noopener noreferrer"
               className="p-1.5 md:p-2.5 rounded-xl bg-purple-100 dark:bg-purple-900/40 border border-purple-300 dark:border-purple-500/40 text-slate-900 dark:text-[#00f0ff] hover:scale-110 transition-all shadow-md flex items-center justify-center"
