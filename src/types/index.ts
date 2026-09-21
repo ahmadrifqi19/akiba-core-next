@@ -10,15 +10,16 @@ export interface PaketItem {
 
 export interface GameItem {
   title: string;
-  category: "sports" | "action" | "fighting" | "racing" | "coop" | "horror";
-  icon: string;
+  category: "sports" | "action" | "fighting" | "racing" | "coop" | "horror" | string;
+  icon?: string;
   popular: boolean;
 }
 
 export interface GameItem {
   title: string;
-  category: string;
-  image: string; // Menggantikan 'icon: string'
+  category: "sports" | "action" | "fighting" | "racing" | "coop" | "horror" | string;
+  image: string;
+  icon?: string;
   popular: boolean;
 }
 
