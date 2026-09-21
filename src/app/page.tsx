@@ -102,21 +102,20 @@ export default function HomePage() {
   };
 
   // Data Katalog Game
-  const gameCatalog: GameItem[] = [
-    { title: "EA Sports FC 27 / FIFA", category: "sports", icon: "⚽", popular: true },
-    { title: "PES Bitbox 2027", category: "sports", icon: "🎮", popular: true },
-    { title: "GTA V (Grand Theft Auto)", category: "action", icon: "🚗", popular: true },
-    { title: "God of War Ragnarök", category: "action", icon: "🪓", popular: true },
-    { title: "Tekken 7 / Tekken 8", category: "fighting", icon: "🥊", popular: true },
-    { title: "Mortal Kombat 11", category: "fighting", icon: "🐲", popular: false },
-    { title: "Naruto Shippuden: Ultimate Ninja STORM 4", category: "fighting", icon: "🍃", popular: true },
-    { title: "Gran Turismo Sport", category: "racing", icon: "🏎️", popular: false },
-    { title: "Need for Speed Heat", category: "racing", icon: "🚘", popular: false },
-    { title: "Resident Evil 4 Remake", category: "horror", icon: "🧟", popular: true },
-    { title: "It Takes Two (Co-Op Special)", category: "coop", icon: "🧩", popular: true },
-    { title: "A Way Out (Co-Op Special)", category: "coop", icon: "🔗", popular: true },
-    { title: "Crash Team Racing (CTR) Nitro-Fueled", category: "racing", icon: "🏎️", popular: true },
-  ];
+const gameCatalog: GameItem[] = [
+  { title: "EA Sports FC 27 / FIFA", category: "sports", image: "/fc27.jpg", popular: true },
+  { title: "PES Bitbox 2027", category: "sports", image: "/games/bitbox.jpg", popular: true },
+  { title: "GTA V (Grand Theft Auto)", category: "action", image: "/games/gta 5.jpg", popular: true },
+  { title: "God of War Ragnarök", category: "action", image: "/games/gof.jpg", popular: true },
+  { title: "Tekken 7", category: "fighting", image: "/games/tekken.jpg", popular: true },
+  { title: "Mortal Kombat 11", category: "fighting", image: "/games/mc11.jpg", popular: false },
+  { title: "Naruto Shippuden: Ultimate Ninja STORM 4", category: "fighting", image: "/games/naruto.jpg", popular: true },
+  { title: "Gran Turismo Sport", category: "racing", image: "/games/granturismo.jpg", popular: false },
+  { title: "Need for Speed Heat", category: "racing", image: "/games/nfs.jpg", popular: false },
+  { title: "Resident Evil 4 Remake", category: "horror", image: "/games/re 4.jpg", popular: true },
+  { title: "It Takes Two (Co-Op Special)", category: "coop", image: "/games/itt.jpg", popular: true },
+  { title: "A Way Out (Co-Op Special)", category: "coop", image: "/games/a way.jpg", popular: true },
+];
 
   // Data FAQ
   const faqList: FaqItem[] = [
@@ -596,23 +595,42 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 relative z-10">
-          {filteredGames.map((game, idx) => (
-            <div 
-              key={idx}
-              className="p-4 rounded-xl bg-white dark:bg-[#140a28]/80 border border-purple-200 dark:border-purple-900/60 hover:border-[#00f0ff] transition-all flex items-center justify-between group shadow-sm"
-            >
-              <div className="flex items-center gap-3 min-w-0 flex-1">
-                <span className="text-2xl p-2 rounded-lg bg-purple-50 dark:bg-[#0b0416] border border-purple-200 dark:border-purple-900 transition-colors shrink-0">{game.icon}</span>
-                <div className="min-w-0 flex-1">
-                  <h4 className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-[#00f0ff] transition-colors truncate">{game.title}</h4>
-                  <span className="text-[10px] text-purple-500 dark:text-purple-400 uppercase font-mono transition-colors">{game.category}</span>
-                </div>
-              </div>
-              {game.popular && <span className="text-[9px] font-black px-2 py-0.5 rounded bg-[#ff007f]/20 text-[#ff007f] border border-[#ff007f]/30 shrink-0">HOT</span>}
-            </div>
-          ))}
+       <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 relative z-10">
+  {filteredGames.map((game, idx) => (
+    <div 
+      key={idx} 
+      className="p-3 md:p-3.5 rounded-xl bg-white dark:bg-[#140a28]/80 border border-purple-200 dark:border-purple-900/60 hover:border-[#00f0ff] transition-all flex items-center justify-between group shadow-sm text-sm"
+    >
+      <div className="flex items-center gap-3 min-w-0">
+        {/* COVER GAMBAR GAME DENGAN STYLE AVATAR ROUNDED */}
+        <div className="relative w-12 h-12 md:w-14 md:h-14 rounded-lg overflow-hidden border border-purple-300 dark:border-purple-700/60 shrink-0 shadow-md group-hover:scale-105 transition-transform duration-300">
+          <Image 
+            src={game.image} 
+            alt={game.title}
+            fill
+            sizes="56px"
+            className="object-cover"
+          />
         </div>
+
+              <div className="min-w-0 flex-1">
+                <h4 className="font-bold text-slate-900 dark:text-white group-hover:text-[#00f0ff] transition-colors truncate">
+                  {game.title}
+                </h4>
+                <span className="text-[10px] text-purple-500 dark:text-purple-400 uppercase font-mono transition-colors">
+                  {game.category}
+                </span>
+              </div>
+            </div>
+
+            {game.popular && (
+              <span className="text-[9px] font-black px-1.5 py-0.5 rounded bg-[#ff007f]/20 text-[#ff007f] border border-[#ff007f]/30 shrink-0 ml-1.5">
+                HOT
+              </span>
+            )}
+          </div>
+        ))}
+      </div>
       </section>
 
       {/* =========================================================

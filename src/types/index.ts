@@ -15,6 +15,13 @@ export interface GameItem {
   popular: boolean;
 }
 
+export interface GameItem {
+  title: string;
+  category: string;
+  image: string; // Menggantikan 'icon: string'
+  popular: boolean;
+}
+
 export interface FaqItem {
   q: string;
   a: string;
