@@ -13,16 +13,14 @@ import {
   Calculator, 
   Flame, 
   Zap, 
-  Search, 
   Loader2, 
   Navigation, 
   ChevronUp, 
   ChevronDown,
   Sun,
-  Moon,
-  Swords
+  Moon
 } from "lucide-react";
-import { PaketKey, PaketItem, GameItem, FaqItem } from "@/types";
+import { PaketKey, PaketItem, FaqItem } from "@/types";
 
 // =========================================================
 // KOMPONEN SVG KHUSUS UNTUK LOGO MEDSOS RESMI
@@ -89,8 +87,6 @@ export default function HomePage() {
   const [isSearchingAddress, setIsSearchingAddress] = useState<boolean>(false);
   const [addressNotice, setAddressNotice] = useState<string>("");
 
-  const [gameCategory, setGameCategory] = useState<string>("all");
-  const [searchGame, setSearchGame] = useState<string>("");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   // Data Katalog Paket Sewa
@@ -100,22 +96,6 @@ export default function HomePage() {
     "36jam": { nama: "PLAYBOX 36 JAM", durasi: "36 Jam", harga: 225000, badge: null, bonus: null },
     "48jam": { nama: "PLAYBOX 48 JAM + BONUS", durasi: "48 Jam + Bonus 12 Jam (Total 60 Jam!)", harga: 300000, badge: "BEST VALUE", bonus: "GRATIS TAMBAHAN 12 JAM" }
   };
-
-  // Data Katalog Game
-const gameCatalog: GameItem[] = [
-  { title: "EA Sports FC 27 / FIFA", category: "sports", image: "/fc27.jpg", popular: true },
-  { title: "PES Bitbox 2027", category: "sports", image: "/games/bitbox.jpg", popular: true },
-  { title: "GTA V (Grand Theft Auto)", category: "action", image: "/games/gta 5.jpg", popular: true },
-  { title: "God of War Ragnarök", category: "action", image: "/games/gof.jpg", popular: true },
-  { title: "Tekken 7", category: "fighting", image: "/games/tekken.jpg", popular: true },
-  { title: "Mortal Kombat 11", category: "fighting", image: "/games/mc11.jpg", popular: false },
-  { title: "Naruto Shippuden: Ultimate Ninja STORM 4", category: "fighting", image: "/games/naruto.jpg", popular: true },
-  { title: "Gran Turismo Sport", category: "racing", image: "/games/granturismo.jpg", popular: false },
-  { title: "Need for Speed Heat", category: "racing", image: "/games/nfs.jpg", popular: false },
-  { title: "Resident Evil 4 Remake", category: "horror", image: "/games/re 4.jpg", popular: true },
-  { title: "It Takes Two (Co-Op Special)", category: "coop", image: "/games/itt.jpg", popular: true },
-  { title: "A Way Out (Co-Op Special)", category: "coop", image: "/games/a way.jpg", popular: true },
-];
 
   // Data FAQ
   const faqList: FaqItem[] = [
@@ -264,13 +244,6 @@ const gameCatalog: GameItem[] = [
 
     window.open(`https://wa.me/${NOMOR_WA_ADMIN}?text=${encodeURIComponent(textPesan)}`, '_blank');
   };
-
-  // Filter Game Berdasarkan Kategori dan Pencarian
-  const filteredGames = gameCatalog.filter(game => {
-    const matchesCategory = gameCategory === "all" || game.category === gameCategory;
-    const matchesSearch = game.title.toLowerCase().includes(searchGame.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
 
   return (
     <main className="min-h-screen bg-[#f3f0f9] dark:bg-[#0b0416] text-slate-900 dark:text-slate-100 font-sans selection:bg-[#ff007f] selection:text-white overflow-hidden relative transition-colors duration-300">
@@ -546,91 +519,6 @@ const gameCatalog: GameItem[] = [
             );
           })}
         </div>
-      </section>
-
-      {/* =========================================================
-         4. KATALOG GAME GRID
-         ========================================================= */}
-      <section className="py-12 px-4 max-w-6xl mx-auto relative z-10">
-        <div className="text-center mb-8 space-y-1 relative z-10">
-          <p className="text-[#00f0ff] font-bold text-sm tracking-widest uppercase" style={{ fontFamily: "var(--font-marker), cursive" }}>GAME SELECTION</p>
-          <h2 className="text-4xl md:text-6xl font-black uppercase text-slate-900 dark:text-white tracking-wide transition-colors" style={{ fontFamily: "var(--font-teko), sans-serif" }}>
-            AVAILABLE <span className="text-[#ff007f]">GAMES</span>
-          </h2>
-        </div>
-
-        <div className="mb-8 flex flex-col md:flex-row gap-4 justify-between items-center relative z-10">
-          <div className="flex flex-wrap justify-center gap-2">
-            {[
-              { id: 'all', label: 'Semua Game' },
-              { id: 'sports', label: 'Sports' },
-              { id: 'action', label: 'Action' },
-              { id: 'fighting', label: 'Fighting' },
-              { id: 'racing', label: 'Balapan' },
-              { id: 'coop', label: 'Co-Op' },
-            ].map(cat => (
-              <button
-                key={cat.id}
-                onClick={() => setGameCategory(cat.id)}
-                className={`px-4 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                  gameCategory === cat.id
-                    ? 'bg-[#ff007f] text-white shadow-md'
-                    : 'bg-white dark:bg-[#140a28] text-purple-900 dark:text-purple-300 border border-purple-200 dark:border-purple-900'
-                }`}
-              >
-                {cat.label}
-              </button>
-            ))}
-          </div>
-
-          <div className="relative w-full md:w-64">
-            <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-purple-400" />
-            <input
-              type="text"
-              placeholder="Cari game..."
-              value={searchGame}
-              onChange={(e) => setSearchGame(e.target.value)}
-              className="w-full bg-white dark:bg-[#140a28] border border-purple-200 dark:border-purple-900 focus:border-[#00f0ff] rounded-xl pl-10 pr-4 py-2 text-xs text-slate-900 dark:text-white focus:outline-none transition-colors"
-            />
-          </div>
-        </div>
-
-       <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 relative z-10">
-  {filteredGames.map((game, idx) => (
-    <div 
-      key={idx} 
-      className="p-3 md:p-3.5 rounded-xl bg-white dark:bg-[#140a28]/80 border border-purple-200 dark:border-purple-900/60 hover:border-[#00f0ff] transition-all flex items-center justify-between group shadow-sm text-sm"
-    >
-      <div className="flex items-center gap-3 min-w-0">
-        {/* COVER GAMBAR GAME DENGAN STYLE AVATAR ROUNDED */}
-        <div className="relative w-12 h-12 md:w-14 md:h-14 rounded-lg overflow-hidden border border-purple-300 dark:border-purple-700/60 shrink-0 shadow-md group-hover:scale-105 transition-transform duration-300">
-          <Image 
-            src={game.image} 
-            alt={game.title}
-            fill
-            sizes="56px"
-            className="object-cover"
-          />
-        </div>
-
-              <div className="min-w-0 flex-1">
-                <h4 className="font-bold text-slate-900 dark:text-white group-hover:text-[#00f0ff] transition-colors truncate">
-                  {game.title}
-                </h4>
-                <span className="text-[10px] text-purple-500 dark:text-purple-400 uppercase font-mono transition-colors">
-                  {game.category}
-                </span>
-              </div>
-            </div>
-
-            {game.popular && (
-              <span className="text-[9px] font-black px-1.5 py-0.5 rounded bg-[#ff007f]/20 text-[#ff007f] border border-[#ff007f]/30 shrink-0 ml-1.5">
-                HOT
-              </span>
-            )}
-          </div>
-        ))}
-      </div>
       </section>
 
       {/* =========================================================
