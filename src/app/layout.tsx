@@ -8,7 +8,7 @@ const teko = Teko({ subsets: ["latin"], weight: ["700"], variable: "--font-teko"
 const marker = Permanent_Marker({ subsets: ["latin"], weight: ["400"], variable: "--font-marker" });
 
 export const metadata: Metadata = {
-  title: "AKIBA CORE • Playbox PS4 Pro Rental",
+  title: "AKIBA CORE • Playbox PS4 Slim Rental",
   description: "Enterprise Esports Playbox Rental System",
 };
 

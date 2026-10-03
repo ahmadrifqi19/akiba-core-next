@@ -99,10 +99,10 @@ export default function HomePage() {
 
   // Data FAQ
   const faqList: FaqItem[] = [
-    { q: "Apa itu Playbox PS4 Pro?", a: "Playbox adalah konsol PlayStation 4 Pro yang telah terintegrasi di dalam koper/box khusus lengkap dengan Layar/Monitor Gaming Portable. Tinggal colok listrik & main!" },
+    { q: "Apa itu Playbox PS4 Slim?", a: "Playbox adalah konsol PlayStation 4 Slim yang telah terintegrasi di dalam koper/box khusus lengkap dengan Layar/Monitor Gaming Portable. Tinggal colok listrik & main!" },
     { q: "Bagaimana sistem perhitungan ongkir antar-jemputnya?", a: "Jarak pengiriman <= 5 KM GRATIS (Rp 0). Di atas 5 KM dikenakan tambahan Rp 10.000 untuk setiap kelipatan 5 KM berikutnya." },
     { q: "Persyaratan apa saja yang dibutuhkan?", a: "Cukup melampirkan foto Kartu Identitas Asli (KTP/SIM/Kartu Pelajar) saat verifikasi." },
-    { q: "Fasilitas apa saja yang didapatkan dalam 1 paket?", a: "1 Unit Playbox PS4 Pro, Monitor Gaming Portable, 2 Stick DualShock 4 Original, Kabel Power & HDMI, serta puluhan Game Siap Main." }
+    { q: "Fasilitas apa saja yang didapatkan dalam 1 paket?", a: "1 Unit Playbox PS4 Slim, Monitor Gaming Portable, 2 Stick DualShock 4 Original, Kabel Power & HDMI, serta puluhan Game Siap Main." }
   ];
 
   // Fungsi Kalkulasi Jarak Haversine
@@ -379,7 +379,7 @@ export default function HomePage() {
                 #morethanjustagames
               </p>
               <h1 className="text-4xl xs:text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none uppercase text-slate-900 dark:text-white drop-shadow-md transition-colors" style={{ fontFamily: "var(--font-teko), sans-serif" }}>
-                PLAYBOX <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#ff007f] via-purple-600 dark:via-purple-300 to-[#00f0ff]">PS4 PRO</span>
+                PLAYBOX <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#ff007f] via-purple-600 dark:via-purple-300 to-[#00f0ff]">PS4 SLIM</span>
               </h1>
               <div className="inline-block bg-[#ff007f] text-white dark:text-slate-950 px-3 py-1 text-base xs:text-xl md:text-2xl font-black uppercase -rotate-2 shadow-[4px_4px_0px_#00f0ff]" style={{ fontFamily: "var(--font-teko), sans-serif" }}>
                 SIAP ANTAR DAN JEMPUT!
@@ -387,7 +387,7 @@ export default function HomePage() {
             </div>
 
             <p className="text-slate-600 dark:text-slate-300 text-sm md:text-base font-medium max-w-xl leading-relaxed transition-colors">
-              Konsol PS4 Pro terintegrasi dengan Monitor Portable di dalam Box Koper eksklusif. Colok listrik langsung mabar di mana saja! Area Cilegon & Serang.
+              Konsol PS4 Slim terintegrasi dengan Monitor Portable di dalam Box Koper eksklusif. Colok listrik langsung mabar di mana saja! Area Cilegon & Serang.
             </p>
 
             <div className="pt-2 flex flex-wrap gap-2 md:gap-3 text-[10px] md:text-xs font-bold">
@@ -433,7 +433,7 @@ export default function HomePage() {
             >
               <Image 
                 src="/playbox.png" 
-                alt="Akiba Core Playbox PS4 Pro Unit" 
+                alt="Akiba Core Playbox PS4 Slim Unit"
                 width={450}
                 height={450}
                 className="object-contain max-h-full max-w-full"
@@ -499,7 +499,7 @@ export default function HomePage() {
                   )}
 
                   <ul className="space-y-2 text-xs text-slate-700 dark:text-slate-300 mb-6 font-medium transition-colors">
-                    <li className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-[#00f0ff]" /> PS4 Pro (Full Games)</li>
+                    <li className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-[#00f0ff]" /> PS4 Slim (Full Games)</li>
                     <li className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-[#00f0ff]" /> Monitor Portable Built-in</li>
                     <li className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-[#00f0ff]" /> 2 Controller DualShock 4</li>
                   </ul>
@@ -699,7 +699,7 @@ export default function HomePage() {
               Sebrang Jombang Business Center, Jl. Nurul Ikhlas Jl. Jombang Masjid, Jombang Wetan, Kec. Jombang, Kota Cilegon, Banten
             </p>
             <p className="text-xs text-slate-500 dark:text-purple-300 max-w-md mx-auto leading-relaxed transition-colors">
-              Layanan Antar-Jemput Sewa Playbox PS4 Pro Area Cilegon, Serang & Sekitarnya (Gratis Ongkir ≤ 5 KM).
+              Layanan Antar-Jemput Sewa Playbox PS4 Slim Area Cilegon, Serang & Sekitarnya (Gratis Ongkir ≤ 5 KM).
             </p>
 
             <a
