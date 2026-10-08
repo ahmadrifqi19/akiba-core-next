@@ -18,7 +18,8 @@ import {
   ChevronUp, 
   ChevronDown,
   Sun,
-  Moon
+  Moon,
+  Calendar
 } from "lucide-react";
 import { PaketKey, PaketItem, FaqItem } from "@/types";
 
@@ -77,11 +78,15 @@ export default function HomePage() {
   const JAM_WEEKDAY = "Senin - Jumat: 10.00 - 02.00 WIB";
   const JAM_WEEKEND = "Sabtu - Minggu: 09.00 - 02.00 WIB";
 
+  // Ambil tanggal hari ini dalam format YYYY-MM-DD untuk batas minimum kalender
+  const todayDateStr = new Date().toISOString().split("T")[0];
+
   // State untuk form dan interaksi
   const [paketPilihan, setPaketPilihan] = useState<PaketKey>("48jam");
   const [jarakKm, setJarakKm] = useState<number>(3);
   const [nama, setNama] = useState<string>("");
   const [alamat, setAlamat] = useState<string>("");
+  const [tanggalBooking, setTanggalBooking] = useState<string>(todayDateStr);
   const [jamAntar, setJamAntar] = useState<string>("");
 
   const [isSearchingAddress, setIsSearchingAddress] = useState<boolean>(false);
@@ -210,6 +215,13 @@ export default function HomePage() {
     return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(val);
   };
 
+  // Format Tanggal Indonesia untuk Pesan WA (contoh: 21 September 2026)
+  const formatTanggalIndo = (dateStr: string) => {
+    if (!dateStr) return "-";
+    const d = new Date(dateStr);
+    return d.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+  };
+
   // Handler Submit Booking (Simpan ke Sheet + Buka WA)
   const handleBookingSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -219,6 +231,7 @@ export default function HomePage() {
       timestamp: new Date().toISOString(),
       nama,
       paket: selectedPaketInfo.nama,
+      tanggalBooking,
       jamAntar: jamAntar || "Secepatnya",
       alamat,
       jarakKm,
@@ -237,7 +250,7 @@ export default function HomePage() {
     }
 
     let textPesan = `*HALO AKIBA CORE, SAYA MAU SEWA PLAYBOX!* 🎮⚡\n\n`;
-    textPesan += `*Detail Pelanggan:*\n• Nama: ${nama || '-'}\n• Alamat:\n${alamat || '-'}\n• Jam Request Antar: ${jamAntar || 'Secepatnya'}\n\n`;
+    textPesan += `*Detail Pelanggan:*\n• Nama: ${nama || '-'}\n• Tanggal Sewa: ${formatTanggalIndo(tanggalBooking)}\n• Jam Request Antar: ${jamAntar || 'Secepatnya'}\n• Alamat:\n${alamat || '-'}\n\n`;
     textPesan += `*Detail Paket:*\n• Paket: ${selectedPaketInfo.nama}\n• Harga Sewa: ${formatRupiah(hargaSewa)}\n\n`;
     textPesan += `*Delivery:*\n• Jarak: ${jarakKm} KM\n• Ongkir: ${biayaOngkir === 0 ? 'GRATIS' : formatRupiah(biayaOngkir)}\n\n`;
     textPesan += `*TOTAL ESTIMASI: ${formatRupiah(totalBiaya)}*`;
@@ -289,7 +302,7 @@ export default function HomePage() {
           {/* Kolom Kanan: Sosmed Resmi (SVG), Theme Toggle & Sewa */}
           <div className="flex items-center gap-1.5 md:gap-3">
             
-            {/* Instagram Resmi - Menggunakan URL yang Benar dan Ikon Logo */}
+            {/* Instagram Resmi */}
             <a
               href="https://www.instagram.com/akibacore.id/"
               target="_blank"
@@ -300,7 +313,7 @@ export default function HomePage() {
               <InstagramIcon className="w-4 h-4" />
             </a>
 
-            {/* TikTok Resmi - Menggunakan SVG Kustom */}
+            {/* TikTok Resmi */}
             <a
               href="https://tiktok.com/@akibacore7"
               target="_blank"
@@ -311,7 +324,7 @@ export default function HomePage() {
               <TikTokIcon className="w-4 h-4" />
             </a>
 
-            {/* WhatsApp Resmi - Menggunakan SVG Kustom */}
+            {/* WhatsApp Resmi */}
             <a
               href={`https://wa.me/6285121263131`}
               target="_blank"
@@ -369,11 +382,6 @@ export default function HomePage() {
             transition={{ duration: 0.8 }}
             className="lg:col-span-7 text-left space-y-4"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1 rounded-md bg-purple-200/80 dark:bg-purple-950/80 border border-purple-400/50 dark:border-purple-500/50 text-xs font-mono text-purple-900 dark:text-[#00f0ff] shadow-lg">
-              <span className="text-[#ff007f]">ドミノ</span>
-              <span>SEASON 2026 : AKIBA CORE</span>
-            </div>
-
             <div className="space-y-1">
               <p className="text-[#00f0ff] text-xl font-bold tracking-widest uppercase" style={{ fontFamily: "var(--font-marker), cursive" }}>
                 #morethanjustagames
@@ -406,42 +414,39 @@ export default function HomePage() {
             </div>
           </motion.div>
 
-          {/* Kolom Visual Kanan: 3D Floating & Interactive Playbox Showcase */}
-{/* Kolom Visual Kanan: Standalone Floating Playbox PNG Only */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-          className="lg:col-span-5 relative flex justify-center items-center mt-6 lg:mt-0"
-        >
-          {/* Element Glow Neon Background (Bulat Berdenyut) */}
-          <div className="absolute w-64 h-64 xs:w-80 xs:h-80 md:w-96 md:h-96 bg-gradient-to-tr from-[#ff007f] via-purple-600 to-[#00f0ff] rounded-full blur-[80px] md:blur-[110px] opacity-60 animate-pulse pointer-events-none"></div>
+          {/* Kolom Visual Kanan: Standalone Floating Playbox PNG Only */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+            className="lg:col-span-5 relative flex justify-center items-center mt-6 lg:mt-0"
+          >
+            <div className="absolute w-64 h-64 xs:w-80 xs:h-80 md:w-96 md:h-96 bg-gradient-to-tr from-[#ff007f] via-purple-600 to-[#00f0ff] rounded-full blur-[80px] md:blur-[110px] opacity-60 animate-pulse pointer-events-none"></div>
 
-          {/* FOTO PLAYBOX PNG DENGAN ANIMASI MELAYANG (FLOATING) */}
-          <div className="relative w-full max-w-sm md:max-w-md h-64 xs:h-72 md:h-80 flex items-center justify-center z-10">
-            <motion.div
-              animate={{ 
-                y: [-8, 8, -8],
-                rotate: [-1, 1, -1]
-              }}
-              transition={{ 
-                repeat: Infinity, 
-                duration: 4, 
-                ease: "easeInOut" 
-              }}
-              className="relative w-full h-full flex items-center justify-center filter drop-shadow-[0_20px_35px_rgba(0,240,255,0.45)] hover:scale-105 transition-transform duration-300 cursor-pointer"
-            >
-              <Image 
-                src="/playbox.png" 
-                alt="Akiba Core Playbox PS4 Slim Unit"
-                width={450}
-                height={450}
-                className="object-contain max-h-full max-w-full"
-                priority
-              />
-            </motion.div>
-          </div>
-        </motion.div>
+            <div className="relative w-full max-w-sm md:max-w-md h-64 xs:h-72 md:h-80 flex items-center justify-center z-10">
+              <motion.div
+                animate={{ 
+                  y: [-8, 8, -8],
+                  rotate: [-1, 1, -1]
+                }}
+                transition={{ 
+                  repeat: Infinity, 
+                  duration: 4, 
+                  ease: "easeInOut" 
+                }}
+                className="relative w-full h-full flex items-center justify-center filter drop-shadow-[0_20px_35px_rgba(0,240,255,0.45)] hover:scale-105 transition-transform duration-300 cursor-pointer"
+              >
+                <Image 
+                  src="/playbox.png" 
+                  alt="Akiba Core Playbox PS4 Slim Unit" 
+                  width={450} 
+                  height={450} 
+                  className="object-contain max-h-full max-w-full"
+                  priority
+                />
+              </motion.div>
+            </div>
+          </motion.div>
 
         </div>
       </section>
@@ -589,19 +594,40 @@ export default function HomePage() {
               <input type="range" min="1" max="30" value={jarakKm} onChange={(e) => setJarakKm(Number(e.target.value))} className="w-full accent-[#00f0ff]" />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* BARIS INPUT NAMA, TANGGAL & JAM SEWA */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {/* 1. Input Nama Lengkap */}
               <div>
-                <label className="block text-[11px] font-bold text-slate-700 dark:text-purple-300 uppercase mb-1 transition-colors">Nama Lengkap</label>
+                <label className="block text-[11px] font-bold text-slate-700 dark:text-purple-300 uppercase mb-1 transition-colors">
+                  Nama Lengkap
+                </label>
                 <input 
                   type="text" 
                   required 
                   placeholder="Contoh: Dika Pradika" 
                   value={nama} 
                   onChange={(e) => setNama(e.target.value)} 
-                  className="w-full bg-purple-50 dark:bg-[#0b0416] border border-purple-200 dark:border-purple-800 rounded-xl p-3 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-[#00f0ff] transition-colors" 
+                  className="w-full h-11 md:h-12 bg-purple-50 dark:bg-[#0b0416] border border-purple-200 dark:border-purple-800 rounded-lg md:rounded-xl px-3 text-xs md:text-sm text-slate-900 dark:text-white focus:outline-none focus:border-[#00f0ff] transition-colors" 
                 />
               </div>
 
+              {/* 2. Input Kalender Tanggal Booking */}
+              <div>
+                <label className="block text-[11px] md:text-xs font-bold text-slate-700 dark:text-purple-300 uppercase mb-1 transition-colors flex items-center gap-1">
+                  <Calendar className="w-3.5 h-3.5 text-[#ff007f] shrink-0" />
+                  <span>Tanggal Sewa</span>
+                </label>
+                <input 
+                  type="date" 
+                  required 
+                  min={todayDateStr}
+                  value={tanggalBooking} 
+                  onChange={(e) => setTanggalBooking(e.target.value)} 
+                  className="w-full h-11 md:h-12 bg-purple-50 dark:bg-[#0b0416] border border-purple-200 dark:border-purple-800 rounded-lg md:rounded-xl px-3 text-xs md:text-sm text-slate-900 dark:text-white focus:outline-none focus:border-[#00f0ff] dark:[color-scheme:dark] transition-colors cursor-pointer" 
+                />
+              </div>
+
+              {/* 3. Input Dropdown Jam Antar */}
               <div>
                 <label className="block text-[11px] md:text-xs font-bold text-slate-700 dark:text-purple-300 uppercase mb-1 transition-colors">
                   Request Jam Pengantaran
@@ -712,23 +738,22 @@ export default function HomePage() {
             </a>
           </div>
 
-             {/* Box Rincian Jam Operasional */}
-            <div className="inline-block p-3 rounded-xl bg-purple-100/70 dark:bg-purple-950/60 border border-purple-300 dark:border-purple-800 text-xs text-slate-800 dark:text-purple-200 text-center space-y-1">
-              <div className="font-bold flex items-center justify-center gap-1 text-[#ff007f] text-[9px] md:text-xs">
-                <Clock className="w-3.5 h-3.5 shrink-0" />
-                <span>JAM OPERASIONAL & BUKA TUTUP</span>
-              </div>
-              <div className="flex flex-col sm:flex-row gap-x-4 gap-y-1 font-mono text-[9px] md:text-[11px] justify-center">
-                <span>{JAM_WEEKDAY}</span>
-                <span>{JAM_WEEKEND}</span>
-              </div>
+          {/* Box Rincian Jam Operasional */}
+          <div className="inline-block p-3 rounded-xl bg-purple-100/70 dark:bg-purple-950/60 border border-purple-300 dark:border-purple-800 text-xs text-slate-800 dark:text-purple-200 text-center space-y-1">
+            <div className="font-bold flex items-center justify-center gap-1 text-[#ff007f] text-[9px] md:text-xs">
+              <Clock className="w-3.5 h-3.5 shrink-0" />
+              <span>JAM OPERASIONAL & BUKA TUTUP</span>
             </div>
+            <div className="flex flex-col sm:flex-row gap-x-4 gap-y-1 font-mono text-[9px] md:text-[11px] justify-center">
+              <span>{JAM_WEEKDAY}</span>
+              <span>{JAM_WEEKEND}</span>
+            </div>
+          </div>
 
           <hr className="border-purple-200 dark:border-purple-900/50 max-w-xs mx-auto" />
 
-          {/* Tautan Media Sosial Resmi dengan Ikon SVG di Footer */}
+          {/* Tautan Media Sosial Resmi */}
           <div className="flex justify-center items-center gap-6 font-bold text-xs text-slate-700 dark:text-purple-300 transition-colors">
-            {/* WhatsApp Footer */}
             <a 
               href="https://wa.me/6285121263131"
               target="_blank" 
@@ -738,7 +763,6 @@ export default function HomePage() {
               <WhatsAppIcon className="w-4 h-4 text-emerald-500" /> WhatsApp
             </a>
             
-            {/* Instagram Footer - URL diperbaiki */}
             <a 
               href="https://www.instagram.com/akibacore.id/" 
               target="_blank" 
@@ -748,7 +772,6 @@ export default function HomePage() {
               <InstagramIcon className="w-4 h-4 text-pink-500" /> Instagram
             </a>
             
-            {/* TikTok Footer */}
             <a 
               href="https://tiktok.com/@akibacore7" 
               target="_blank" 
